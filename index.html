@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <title>Mi primer VueJs</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="text-center">Tabla de Usuarios</h1>
+      <div class="container">
+        <lista-usuarios></lista-usuarios>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+      Vue.component("lista-usuarios", {
+        template: `
+      <table class="table table-striped table-primary text-center">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">RUN</th>
+              <th scope="col">Fecha de Nacimiento</th>
+              <th scope="col">Edad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(persona, $index) in personas" :key="$index">
+              <th scope="row">{{ $index+1 }}</th>
+              <td>{{ persona.nombre }}</td>
+              <td>{{ persona.apellido }}</td>
+              <td>{{ persona.run }}</td>
+              <td>{{ persona.fecha_de_naciemiento }}</td>
+              <td>{{ persona.edad }}</td>
+            </tr>
+          </tbody>
+        </table>
+      `,
+        data: () => ({
+          personas: [
+            {
+              nombre: "Francisca",
+              apellido: "Arcila",
+              run: "13.456.324-5",
+              fecha_de_naciemiento: "30-07-1989",
+              edad: 40,
+            },
+            {
+              nombre: "Camilo",
+              apellido: "Diaz",
+              run: "20.456.321-0",
+              fecha_de_naciemiento: "03-10-2013",
+              edad: 25,
+            },
+            {
+              nombre: "Vanessa",
+              apellido: "Riquelme",
+              run: "21.456.321-5",
+              fecha_de_naciemiento: "11-12-2002",
+              edad: 15,
+            },
+          ]
+        }),
+      });
+      new Vue({
+        el: "#app",
+      });
+    </script>
+  </body>
+</html>
